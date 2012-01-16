@@ -1,9 +1,32 @@
 body {
-		background-color: red;
+		background-color: #4C8A74;
+		margin: 0px;
+	}
+
+#header{
+		background-color: black;
 		color: white;
+		font-size: 2em;
 		text-align: center;
+		padding: 10px;
 	}
 	
-#testdiv{
-		background-color: blue;
+#linkbar{
+		background-color: #31574A;
+		color: white;
+	}
+	
+#links{
+		width: 100%;
+		list-style-type: none;
+		margin: 0px;	/*  This has to be here, otherwise there will be a blank space between the header and the navbar */
+	}
+	
+.clearfix{
+		clear: both;
+	}
+	
+.menulinks{
+		padding: 10px;
+		float: left;
 	}
