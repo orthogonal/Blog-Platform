@@ -1,0 +1,3 @@
+<? //index.php
+echo "Hello!";
+?>
