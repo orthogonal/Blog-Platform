@@ -30,3 +30,14 @@ body {
 		padding: 10px;
 		float: left;
 	}
+	
+.post{
+		margin: 30px;
+		border-width: 3px;
+		border-style: solid;
+		border-color: black;
+		background-color: white;
+		color: black;
+		-moz-border-radius: 50px;
+		border-radius: 50px;
+}

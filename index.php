@@ -36,6 +36,17 @@ else{
 
 echo "<li class='menulinks'>About</li>  </ul>  <div class='clearfix'></div></div>";
 
+$query = "SELECT * FROM blog_posts ORDER BY id DESC";
+$result = mysql_query($query) or die(mysql_error());
+$row = mysql_fetch_row($result);
+echo <<<_HDOC
+<div class="post">
+	<div class="postHeader">$row[2]</div>
+	<div class="postText">$row[3]</div>
+</div>
+_HDOC;
+
+
 
 
 
