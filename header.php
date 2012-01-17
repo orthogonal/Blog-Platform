@@ -26,10 +26,10 @@ echo <<<_HDOC
 <div class='sheet'></div>
 <div id='register'>
 	Register
-	<form method="post" action="www.lathamcity.com/blog/index.php">
+	<form method="post" action="http://www.lathamcity.com/blog/index.php">
 		<table>
 		<tr>
-			<td>Userame: <input type="text" name="reg_name" size="32" maxlength="32" /></td>
+			<td>Username: <input type="text" name="reg_name" size="32" maxlength="32" /></td>
 		</tr><tr>
 			<td>Password: <input type="password" name="reg_password" size="32" maxlength="32" /></td>
 		</tr><tr>
@@ -45,7 +45,7 @@ echo <<<_HDOC
 
 <div id='login'>
 	Login
-	<form method="post" action="www.lathamcity.com/blog/index.php">
+	<form method="post" action="http://www.lathamcity.com/blog/index.php">
 		<table>
 		<tr>
 			<td>Username: <input type="text" name="login_name" size="32" maxlength="32" /></td>

@@ -31,6 +31,7 @@ $('document').ready(function() {
 		$('.sheet').fadeOut(200);
 		$('#register').fadeOut(200);
 		$('#login').fadeOut(200);
+		//We need to clear the inputs for login and register here
 	});
 }); //end ready
 </script>

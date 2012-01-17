@@ -1,4 +1,31 @@
 <? //index.php
+require_once("dblogin.php");
+$db_server = mysql_connect($db_hostname, $db_username, $db_password);
+mysql_select_db($db_database, $db_server);
+
+if ($_POST['reg_name'] != null){
+	
+}
+
+if ($_POST['login_name'] != null){
+	$name = fix_string($_POST['login_name']);
+	$password = fix_string($_POST['login_password']);
+	$query = "SELECT * FROM blog_users WHERE username='$name'";
+	$result = mysql_query($query);
+	$row = mysql_fetch_row($result);
+	if ($row != null){
+		if ($row[2] == sha1($password))
+			setcookie('main', $row[1]);
+		else
+			//Incorrect Password
+			;
+	}
+	else 
+		//Incorrect Username
+		;
+}
+
+
 echo <<<_HDOC
 <!DOCTYPE html>
 <html>
@@ -56,8 +83,12 @@ _HDOC;
 
 
 
-
-
+function fix_string($string)
+{return htmlentities(mysqlfix($string));}
+function mysqlfix($string)
+{if (get_magic_quotes_gpc())
+	$string = stripslashes($string);
+return mysql_real_escape_string($string);}
 
 mysql_close($db_server);
 echo <<<_HDOC
