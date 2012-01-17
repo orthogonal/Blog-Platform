@@ -20,7 +20,7 @@ if ($_POST['login_name'] != null){
 	$row = mysql_fetch_row($result);
 	if ($row != null){
 		if ($row[2] == sha1($password)){
-			setcookie('main', $row[1]);
+			setcookie('main', $row[1] . "&" . $row[0]);
 			header('Location: http://www.lathamcity.com/blog/index.php');
 			}
 		else

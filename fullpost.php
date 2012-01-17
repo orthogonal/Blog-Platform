@@ -1,4 +1,24 @@
 <?php //fullpost.php
+
+require_once("dblogin.php");
+$db_server = mysql_connect($db_hostname, $db_username, $db_password);
+mysql_select_db($db_database, $db_server);
+
+$postid = $_GET['id'];
+if ($postid == '') header('Location: http://www.lathamcity.com/blog/index.php');
+
+$comment = $_POST['comment'];
+if ($comment != ''){
+	if ($_COOKIE['main'] != ""){
+		$cookievals = explode("&", $_COOKIE['main']);
+		$query = "INSERT INTO blog_comments (userid, text, postid) VALUES ('$cookievals[1]', '$comment', '$postid')";
+		$result = mysql_query($query) or die(mysql_error());
+		header("Location: http://www.lathamcity.com/blog/fullpost.php?id=$postid");
+	}
+	else //Tell the user to log in
+	;
+}
+
 echo <<<_HDOC
 <!DOCTYPE html>
 <html>
@@ -39,10 +59,6 @@ $('document').ready(function() {
 </head>
 _HDOC;
 
-$postid = $_GET['id'];
-if ($postid == '') echo "<script> $('document').ready(function() {window.location.replace('http://lathamcity.com/blog/index.php');});</script>";
-
-
 require_once("header.php");
 
 $query = "SELECT * FROM blog_posts WHERE id='$postid'";
@@ -60,9 +76,13 @@ echo <<<_HDOC
 	<div class="commentBox">
 _HDOC;
 
-if ($_COOKIE['main'] == "") echo "Please register or login to comment on this post";
-else echo "Please leave a comment!<br />";
-
+if ($_COOKIE['main'] == "")
+	echo "Please register or login to comment on this post";
+else{
+	echo "Please leave a comment!<br />";
+	echo "<form method='post' action='http://www.lathamcity.com/blog/fullpost.php?id=$postid'>";
+	echo "<table><tr><td><textarea name='comment' cols='100' rows='8'></textarea></td></tr><tr><td><input type='submit' value='Submit' /></td></tr></table></form>";
+}
 echo "</div>";
 
 $query = "SELECT * FROM blog_comments WHERE postid='$postid' ORDER BY id ASC";
