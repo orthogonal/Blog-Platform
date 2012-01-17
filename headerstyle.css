@@ -30,3 +30,21 @@ body {
 		padding: 10px;
 		float: left;
 	}
+			
+#register, #login{
+		position: absolute;
+		left: 20%;
+		right: 20%;
+		background-color: white;
+		border-width: 10px;
+		border-style: solid;
+		border-color: black;
+		padding: 20px;
+		z-index: 64;
+}
+
+#linkbar a{
+		text-decoration: none;
+		font-weight: 600;
+		color: white;
+	}

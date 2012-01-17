@@ -46,23 +46,8 @@
 		opacity: 0.6;
 	}
 	
-#register, #login{
-		position: absolute;
-		left: 20%;
-		right: 20%;
-		background-color: white;
-		border-width: 10px;
-		border-style: solid;
-		border-color: black;
-		padding: 20px;
-		z-index: 64;
-}
-
-a{
+.post a{
 		text-decoration: none;
 		font-weight: 600;
-	}
-	
-.post a{
 		color: black;
 	}

@@ -14,10 +14,11 @@ echo <<<_HDOC
 _HDOC;
 
 if ($_COOKIE['main'] == "")
-	echo  "<li class='menulinks'><a>Register</a></li>  <li class='menulinks'><a>Login</a></li>";
+	echo  "<li class='menulinks'><a href='http://www.lathamcity.com/register.php'>Register</a></li>  
+	<li class='menulinks'><a href='http://www.lathamcity.com/login.php'>Login</a></li>";
 else{
 	$cookieparts = explode('&', $_COOKIE['main']);
-	echo "<li class='menulinks'>Welcome $cookieparts[0]</li>  <li class='menulinks' class='link'>Logout</li>";
+	echo "<li class='menulinks'>Welcome $cookieparts[0]</li>  <li class='menulinks' class='link'><a href='http://www.lathamcity.com/blog/logout.php'>Logout</a></li>";
 }
 
 echo "<li class='menulinks'>About</li>  </ul>  <div class='clearfix'></div></div>";

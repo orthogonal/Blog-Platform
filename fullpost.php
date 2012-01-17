@@ -13,16 +13,17 @@ $('document').ready(function() {
 	$('#login').hide();
 	$('.sheet').hide();
 	
-	$('.menulinks').click(function() {
-		alert($(this).text());
+	$('.menulinks').click(function(evt) {
 		switch($(this).text()){
 			case "Register":
 				$('.sheet').show();
 				$('#register').show();
+				evt.preventDefault();
 				break;
 			case "Login":
 				$('.sheet').show();
 				$('#login').show();
+				evt.preventDefault();
 				break;
 		}
 	});
@@ -31,7 +32,7 @@ $('document').ready(function() {
 		$('.sheet').fadeOut(200);
 		$('#register').fadeOut(200);
 		$('#login').fadeOut(200);
-		//We need to clear the inputs for login and register here
+		//Clear login/register inputs
 	});
 }); //end ready
 </script>
