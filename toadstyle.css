@@ -54,5 +54,15 @@
 		border-width: 10px;
 		border-style: solid;
 		border-color: black;
+		padding: 20px;
 		z-index: 64;
 }
+
+a{
+		text-decoration: none;
+		font-weight: 600;
+	}
+	
+.post a{
+		color: black;
+	}
