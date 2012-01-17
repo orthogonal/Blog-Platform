@@ -25,7 +25,7 @@ $result2 = mysql_query($query2) or die(mysql_error());
 $row2 = mysql_fetch_row($result2);
 echo <<<_HDOC
 <div class="post">
-	<div class="postHeader">$row[2]</div>
+	<div class="postHeader"><a href='fullpost.php?id=$row[0]'>$row[2]</a></div>
 	<div class="postAuthor">Written by $row2[5] at $row[4]</div>
 	<div class="postText">$row[3]</div>
 </div>
