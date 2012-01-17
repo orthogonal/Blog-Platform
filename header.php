@@ -21,4 +21,8 @@ else{
 }
 
 echo "<li class='menulinks'>About</li>  </ul>  <div class='clearfix'></div></div>";
+
+echo "<div class='sheet'></div>";
+echo "<div id='register'>This is where you register</div>";
+echo "<div id='login'>Log in!</div>";
 ?>

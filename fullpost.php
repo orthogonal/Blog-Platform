@@ -9,7 +9,29 @@ echo <<<_HDOC
 <script src="http://lathamcity.com/_js/jquery-1.7.js"></script>
 <script>
 $('document').ready(function() {
-
+	$('#register').hide();
+	$('#login').hide();
+	$('.sheet').hide();
+	
+	$('.menulinks').click(function() {
+		alert($(this).text());
+		switch($(this).text()){
+			case "Register":
+				$('.sheet').show();
+				$('#register').show();
+				break;
+			case "Login":
+				$('.sheet').show();
+				$('#login').show();
+				break;
+		}
+	});
+	
+	$('.sheet').click(function() {
+		$('.sheet').fadeOut(200);
+		$('#register').fadeOut(200);
+		$('#login').fadeOut(200);
+	});
 }); //end ready
 </script>
 </head>
