@@ -13,12 +13,23 @@ echo <<<_HDOC
 		<ul id="links">
 _HDOC;
 
+
+$isadmin = false;
+$cookieparts = null;
+
 if ($_COOKIE['main'] == "")
 	echo  "<li class='menulinks'><a href='http://www.lathamcity.com/register.php'>Register</a></li>  
 	<li class='menulinks'><a href='http://www.lathamcity.com/login.php'>Login</a></li>";
 else{
 	$cookieparts = explode('&', $_COOKIE['main']);
-	echo "<li class='menulinks'>Welcome $cookieparts[0]</li>  <li class='menulinks' class='link'><a href='http://www.lathamcity.com/blog/logout.php'>Logout</a></li>";
+	$query = "SELECT * FROM blog_users WHERE id='$cookieparts[1]'";
+	$result = mysql_query($query) or die(mysql_error());
+	$row = mysql_fetch_row($result);
+	if ($row[3] == 1) $isadmin = true;
+
+	echo "<li class='menulinks'>Welcome $cookieparts[0]</li>";
+	echo "<li class='menulinks' class='link'><a href='http://www.lathamcity.com/blog/logout.php'>Logout</a></li>";
+	if ($isadmin) echo "<li class='menulinks' class='link'><a href='http://www.lathamcity.com/newpost.php'>New Post</a></li>";
 }
 
 echo "<li class='menulinks'>About</li>  </ul>  <div class='clearfix'></div></div>";

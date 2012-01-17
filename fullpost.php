@@ -7,7 +7,7 @@ mysql_select_db($db_database, $db_server);
 $postid = $_GET['id'];
 if ($postid == '') header('Location: http://www.lathamcity.com/blog/index.php');
 
-$comment = $_POST['comment'];
+$comment = nl2br($_POST['comment']);
 if ($comment != ''){
 	if ($_COOKIE['main'] != ""){
 		$cookievals = explode("&", $_COOKIE['main']);
