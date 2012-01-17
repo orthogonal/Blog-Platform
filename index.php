@@ -81,11 +81,17 @@ $row = mysql_fetch_row($result);
 $query2 = "SELECT * FROM blog_users WHERE id='$row[1]'";
 $result2 = mysql_query($query2) or die(mysql_error());
 $row2 = mysql_fetch_row($result2);
+$query3 = "SELECT * FROM blog_comments WHERE postid='$row[0]'";
+$result3 = mysql_query($query3) or die(mysql_error());
+$numComments = 0;
+while (mysql_fetch_row($result3) != null)
+	$numcomments++;
 echo <<<_HDOC
 <div class="post">
 	<div class="postHeader"><a href='fullpost.php?id=$row[0]'>$row[2]</a></div>
 	<div class="postAuthor">Written by $row2[5] at $row[4]</div>
 	<div class="postText">$row[3]</div>
+	<div class="postComments">$numcomments comments</div>
 </div>
 _HDOC;
 

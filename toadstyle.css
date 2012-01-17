@@ -15,14 +15,9 @@
 		margin: 10px;
 }
 
-.postAuthor{
+.postAuthor, .postText, .postComments{
 		margin: 15px;
 		font-size: 0.8em;
-}
-
-.postText{
-		font-size: 0.8em;
-		margin: 15px;
 }
 
 .commentBox{
