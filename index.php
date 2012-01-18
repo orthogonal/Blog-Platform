@@ -96,15 +96,20 @@ require_once("header.php");
 
 $query = "SELECT * FROM blog_posts ORDER BY id DESC";
 $result = mysql_query($query) or die(mysql_error());
-$row = mysql_fetch_row($result);
-$query2 = "SELECT * FROM blog_users WHERE id='$row[1]'";
-$result2 = mysql_query($query2) or die(mysql_error());
-$row2 = mysql_fetch_row($result2);
-$query3 = "SELECT * FROM blog_comments WHERE postid='$row[0]'";
-$result3 = mysql_query($query3) or die(mysql_error());
-$numcomments = 0;
-while (mysql_fetch_row($result3) != null)
-	$numcomments++;
+
+$i = 0;
+while (($row = mysql_fetch_row($result)) != null && $i++ < 10){
+	//Find author
+	$query2 = "SELECT * FROM blog_users WHERE id='$row[1]'";
+	$result2 = mysql_query($query2) or die(mysql_error());
+	$row2 = mysql_fetch_row($result2);
+	
+	//Find comments
+	$query3 = "SELECT * FROM blog_comments WHERE postid='$row[0]'";
+	$result3 = mysql_query($query3) or die(mysql_error());
+	$numcomments = 0;
+	while (mysql_fetch_row($result3) != null)
+		$numcomments++;
 echo <<<_HDOC
 <div class="post">
 	<div class="postHeader"><a href='fullpost.php?id=$row[0]'>$row[2]</a></div>
@@ -112,8 +117,9 @@ echo <<<_HDOC
 	<div class="postText">$row[3]</div>
 	<div class="postComments">$numcomments comment
 _HDOC;
-echo (($numcomments == 1) ? "" : "s" );
-echo "</div></div>";
+	echo (($numcomments == 1) ? "" : "s" );
+	echo "</div></div>";
+}
 
 
 

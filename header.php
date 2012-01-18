@@ -6,7 +6,7 @@ mysql_select_db($db_database, $db_server);
 
 echo <<<_HDOC
 	<div id="header">
-		Andy's Blog
+		<a href='http://www.lathamcity.com/blog/index.php'>Andy's Blog</a>
 	</div>
 	
 	<div id="linkbar">

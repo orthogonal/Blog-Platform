@@ -55,6 +55,11 @@ body {
 		z-index: 64;
 }
 
+#header a{
+		text-decoration: none;
+		color: white;
+}
+
 #linkbar a{
 		text-decoration: none;
 		font-weight: 600;
