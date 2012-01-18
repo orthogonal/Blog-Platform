@@ -7,7 +7,7 @@ mysql_select_db($db_database, $db_server);
 $postid = $_GET['id'];
 if ($postid == '') header('Location: http://www.lathamcity.com/blog/index.php');
 
-$comment = nl2br($_POST['comment']);
+$comment = fix_string(nl2br($_POST['comment']));
 if ($comment != ''){
 	if ($_COOKIE['main'] != ""){
 		$cookievals = explode("&", $_COOKIE['main']);
@@ -31,6 +31,7 @@ echo <<<_HDOC
 $('document').ready(function() {
 	$('#register').hide();
 	$('#login').hide();
+	$('#newpost').hide();
 	$('.sheet').hide();
 	
 	$('.menulinks').click(function(evt) {
@@ -45,6 +46,11 @@ $('document').ready(function() {
 				$('#login').show();
 				evt.preventDefault();
 				break;
+			case "New Post":
+				$('.sheet').show();
+				$('#newpost').show();
+				evt.preventDefault();
+				break;
 		}
 	});
 	
@@ -52,6 +58,7 @@ $('document').ready(function() {
 		$('.sheet').fadeOut(200);
 		$('#register').fadeOut(200);
 		$('#login').fadeOut(200);
+		$('#newpost').fadeOut(200);
 		//Clear login/register inputs
 	});
 }); //end ready
@@ -92,7 +99,7 @@ while ($row != null){
 	$query2 = "SELECT * FROM blog_users WHERE id='$row[1]'";
 	$result2 = mysql_query($query2) or die(mysql_error());
 	$row2 = mysql_fetch_row($result2);
-	echo "<div class='comment'>$row2[5] at $row[5]:<br />$row[2]</div>";
+	echo "<div class='comment'>$row2[5] at $row[5]:<br />" . str_replace("&lt;br /&gt;", "<br />", $row[2]) . "</div>";
 	$row = mysql_fetch_row($result);
 }
 
@@ -104,7 +111,12 @@ _HDOC;
 
 
 
-
+function fix_string($string)
+{return htmlentities(mysqlfix($string));}
+function mysqlfix($string)
+{if (get_magic_quotes_gpc())
+	$string = stripslashes($string);
+return mysql_real_escape_string($string);}
 
 mysql_close($db_server);
 echo <<<_HDOC

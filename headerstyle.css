@@ -43,6 +43,18 @@ body {
 		z-index: 64;
 }
 
+#newpost{
+		position: absolute;
+		left: 15%;
+		right: 15%;
+		background-color: white;
+		border-width: 10px;
+		border-style: solid;
+		border-color: black;
+		padding: 20px;
+		z-index: 64;
+}
+
 #linkbar a{
 		text-decoration: none;
 		font-weight: 600;

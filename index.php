@@ -32,6 +32,18 @@ if ($_POST['login_name'] != null){
 		;
 }
 
+if ($_POST['newpost_title'] != null){
+	if ($_COOKIE['main'] != null){
+		$cookieparts = explode('&', $_COOKIE['main']);
+		$title = fix_string($_POST['newpost_title']);
+		$text = nl2br(fix_string($_POST['newpost_content']));
+		$query = "INSERT INTO blog_posts (authorid, title, text) VALUES ('$cookieparts[1]', '$title', '$text')";
+		$result = mysql_query($query) or die(mysql_error());
+	}
+	else //Tell the user to log in
+	;
+}
+
 
 echo <<<_HDOC
 <!DOCTYPE html>
@@ -45,6 +57,7 @@ echo <<<_HDOC
 $('document').ready(function() {
 	$('#register').hide();
 	$('#login').hide();
+	$('#newpost').hide();
 	$('.sheet').hide();
 	
 	$('.menulinks').click(function(evt) {
@@ -59,6 +72,11 @@ $('document').ready(function() {
 				$('#login').show();
 				evt.preventDefault();
 				break;
+			case "New Post":
+				$('.sheet').show();
+				$('#newpost').show();
+				evt.preventDefault();
+				break;
 		}
 	});
 	
@@ -66,6 +84,7 @@ $('document').ready(function() {
 		$('.sheet').fadeOut(200);
 		$('#register').fadeOut(200);
 		$('#login').fadeOut(200);
+		$('#newpost').fadeOut(200);
 		//Clear login/register inputs
 	});
 }); //end ready
@@ -83,7 +102,7 @@ $result2 = mysql_query($query2) or die(mysql_error());
 $row2 = mysql_fetch_row($result2);
 $query3 = "SELECT * FROM blog_comments WHERE postid='$row[0]'";
 $result3 = mysql_query($query3) or die(mysql_error());
-$numComments = 0;
+$numcomments = 0;
 while (mysql_fetch_row($result3) != null)
 	$numcomments++;
 echo <<<_HDOC
@@ -91,9 +110,10 @@ echo <<<_HDOC
 	<div class="postHeader"><a href='fullpost.php?id=$row[0]'>$row[2]</a></div>
 	<div class="postAuthor">Written by $row2[5] at $row[4]</div>
 	<div class="postText">$row[3]</div>
-	<div class="postComments">$numcomments comments</div>
-</div>
+	<div class="postComments">$numcomments comment
 _HDOC;
+echo (($numcomments == 1) ? "" : "s" );
+echo "</div></div>";
 
 
 
