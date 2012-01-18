@@ -103,10 +103,7 @@ while ($row != null){
 	$row = mysql_fetch_row($result);
 }
 
-echo <<<_HDOC
-</div>
-_HDOC;
-
+echo "</div>";
 
 
 
@@ -118,10 +115,5 @@ function mysqlfix($string)
 	$string = stripslashes($string);
 return mysql_real_escape_string($string);}
 
-mysql_close($db_server);
-echo <<<_HDOC
-
-</body>
-</html>
-_HDOC;
+require_once("footer.php");
 ?>

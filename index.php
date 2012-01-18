@@ -98,7 +98,7 @@ $query = "SELECT * FROM blog_posts ORDER BY id DESC";
 $result = mysql_query($query) or die(mysql_error());
 
 $i = 0;
-while (($row = mysql_fetch_row($result)) != null && $i++ < 10){
+while ($i++ < 10 && ($row = mysql_fetch_row($result)) != null){
 	//Find author
 	$query2 = "SELECT * FROM blog_users WHERE id='$row[1]'";
 	$result2 = mysql_query($query2) or die(mysql_error());
@@ -121,6 +121,8 @@ _HDOC;
 	echo "</div></div>";
 }
 
+if (($row = mysql_fetch_row($result) != null))
+		echo "<div id='archivelink'><a href='http://www.lathamcity.com/blog/archive.php'>Archive</a></div>";
 
 
 
@@ -131,10 +133,5 @@ function mysqlfix($string)
 	$string = stripslashes($string);
 return mysql_real_escape_string($string);}
 
-mysql_close($db_server);
-echo <<<_HDOC
-
-</body>
-</html>
-_HDOC;
+require_once("footer.php");
 ?>

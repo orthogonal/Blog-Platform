@@ -46,3 +46,14 @@
 		font-weight: 600;
 		color: black;
 	}
+	
+#archivediv a, #archivelink a{
+		text-decoration: none;
+		text-align: center;
+		font-weight: 600;
+		color: black;
+	}
+	
+#archivediv, #archivelink{
+		text-align: center;	
+	}
