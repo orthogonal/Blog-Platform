@@ -36,7 +36,7 @@ if ($_POST['newpost_title'] != null){
 	if ($_COOKIE['main'] != null){
 		$cookieparts = explode('&', $_COOKIE['main']);
 		$title = fix_string($_POST['newpost_title']);
-		$text = nl2br(fix_string($_POST['newpost_content']));
+		$text = fix_string(nl2br($_POST['newpost_content']));
 		$query = "INSERT INTO blog_posts (authorid, title, text) VALUES ('$cookieparts[1]', '$title', '$text')";
 		$result = mysql_query($query) or die(mysql_error());
 	}
@@ -114,9 +114,9 @@ echo <<<_HDOC
 <div class="post">
 	<div class="postHeader"><a href='fullpost.php?id=$row[0]'>$row[2]</a></div>
 	<div class="postAuthor">Written by $row2[5] at $row[4]</div>
-	<div class="postText">$row[3]</div>
-	<div class="postComments">$numcomments comment
 _HDOC;
+	echo "<div class='postText'>" . str_replace("&lt;br /&gt;", "<br />", $row[3]) . "</div>";
+	echo "<div class='postComments'>$numcomments comment";
 	echo (($numcomments == 1) ? "" : "s" );
 	echo "</div></div>";
 }
