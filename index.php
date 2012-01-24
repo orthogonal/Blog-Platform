@@ -44,6 +44,16 @@ if ($_POST['newpost_title'] != null){
 	;
 }
 
+if ($_POST['editpost_title'] != null){
+	if ($_COOKIE['main'] != null){
+		$cookieparts = explode('&', $_COOKIE['main']);
+		$title = fix_string($_POST['editpost_title']);
+		$text = fix_string(nl2br($_POST['editpost_content']));
+		$id = $_POST['editpost_id'];
+		$query = "UPDATE blog_posts SET title='$title', text='$text' WHERE id='$id'";
+		$result = mysql_query($query) or die(mysql_error());
+	}
+}
 
 echo <<<_HDOC
 <!DOCTYPE html>
@@ -58,6 +68,7 @@ $('document').ready(function() {
 	$('#register').hide();
 	$('#login').hide();
 	$('#newpost').hide();
+	$('#editpost').hide();
 	$('.sheet').hide();
 	
 	$('.menulinks').click(function(evt) {
@@ -80,11 +91,23 @@ $('document').ready(function() {
 		}
 	});
 	
+	$('.edit').click(function(evt) {
+		$('.sheet').show();
+		$('#editpost').show();
+		id = $(this).attr('data_id');
+		$('#editpost_id').attr('value', id);
+		$('#editpost_content').attr('value', $("#postid" + id).text());
+		$('#editpost_title').attr('value', $("#titleid" + id).text());
+		window.scrollTo(0, 0);
+		evt.preventDefault();
+	});
+	
 	$('.sheet').click(function() {
 		$('.sheet').fadeOut(200);
 		$('#register').fadeOut(200);
 		$('#login').fadeOut(200);
 		$('#newpost').fadeOut(200);
+		$('#editpost').fadeOut(200);
 		//Clear login/register inputs
 	});
 }); //end ready
@@ -112,12 +135,15 @@ while ($i++ < 10 && ($row = mysql_fetch_row($result)) != null){
 		$numcomments++;
 echo <<<_HDOC
 <div class="post">
-	<div class="postHeader"><a href='fullpost.php?id=$row[0]'>$row[2]</a></div>
+	<div class="postHeader"><a href='fullpost.php?id=$row[0]' id='titleid$row[0]'>$row[2]</a></div>
 	<div class="postAuthor">Written by $row2[5] at $row[4]</div>
 _HDOC;
-	echo "<div class='postText'>" . str_replace("&lt;br /&gt;", "<br />", $row[3]) . "</div>";
+	echo "<div class='postText' id='postid$row[0]'>" . str_replace("&lt;br /&gt;", "<br />", $row[3]) . "</div>";
 	echo "<div class='postComments'>$numcomments comment";
 	echo (($numcomments == 1) ? "" : "s" );
+	$cookiecontents = explode("&", $_COOKIE['main']);
+	if ($row2[0] == $cookiecontents[1])
+		echo "&nbsp;&nbsp;&nbsp;<a class='edit' href='' data_id=$row[0]>Edit</a>";
 	echo "</div></div>";
 }
 

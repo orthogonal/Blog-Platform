@@ -84,5 +84,21 @@ echo <<<_HDOC
 		</table>
 	</form>
 </div>
+
+<div id='editpost'>
+	Edit Post
+	<form method="post" action="http://www.lathamcity.com/blog/index.php">
+		<table>
+		<tr>
+			<td>Title: <input type="text" name="editpost_title" id="editpost_title" size="128" maxlength="128" /></td>
+		</tr><tr>
+			<td><textarea name="editpost_content" id="editpost_content" cols="102" rows="20"></textarea></td>
+		</tr><tr>
+			<td><input type="submit" value="Submit" /></td>
+		</tr>
+		<input type="hidden" name="editpost_id" id="editpost_id" value="null" />
+		</table>
+	</form>
+</div>
 _HDOC;
 ?>
