@@ -11,6 +11,12 @@ Only the administrator can add new posts.  So if someone is logged in as an admi
 
 Anyone can add comments, as long as they're logged in.  Anonymous users should be prompted to log in.
 
+Post authors can edit their own posts.
+
 When the page loads, posts are grabbed from the database and arranged in order of descending timestamp.  The first ten posts will be displayed in full, and the rest will simply be linked to at the bottom.  Or maybe there will be an AJAX command to go to the next ten or previous ten posts by date/id.  
 
 That's version 1.0, anyway.
+
+GOALS FOR VERSION 1.1:
+Editing of comments.
+More attractive layout.
