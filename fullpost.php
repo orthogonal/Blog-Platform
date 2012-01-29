@@ -23,7 +23,7 @@ echo <<<_HDOC
 <!DOCTYPE html>
 <html>
 <head>
-<title>Andy's Blog</title>
+<title>Tilfeldigtenkning</title>
 <link rel="stylesheet" type="text/css" href="http://www.lathamcity.com/blog/headerstyle.css" />
 <link rel="stylesheet" type="text/css" href="http://www.lathamcity.com/blog/toadstyle.css" />
 <script src="http://lathamcity.com/_js/jquery-1.7.js"></script>
@@ -34,6 +34,7 @@ $('document').ready(function() {
 	$('#newpost').hide();
 	$('#editpost').hide();
 	$('#about').hide();
+	$('#nothing').hide();
 	$('.sheet').hide();
 	
 	$('.menulinks').click(function(evt) {

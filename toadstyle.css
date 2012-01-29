@@ -21,6 +21,10 @@
 		font-family: 'Palatino', 'Palatino Linotype', 'Georgia', serif;
 }
 
+.postAuthor{
+		font-size: 16px;
+}
+
 .commentBox{
 		font-size: 18px;
 		margin: 15px;

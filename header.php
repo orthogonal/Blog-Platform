@@ -6,7 +6,7 @@ mysql_select_db($db_database, $db_server);
 
 echo <<<_HDOC
 	<div id="header">
-		<a href='http://www.lathamcity.com/blog/index.php'>Andy's Blog</a>
+		<a href='http://www.lathamcity.com/blog/index.php'>Tilfeldigtenkning</a>
 	</div>
 	
 	<div id="linkbar">
@@ -99,6 +99,9 @@ echo <<<_HDOC
 		<input type="hidden" name="editpost_id" id="editpost_id" value="null" />
 		</table>
 	</form>
+</div>
+
+<div id='nothing'>
 </div>
 
 <div id='about'>
