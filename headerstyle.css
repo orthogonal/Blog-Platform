@@ -33,6 +33,7 @@ body {
 			
 #register, #login{
 		position: absolute;
+		visibility: hidden;
 		left: 20%;
 		right: 20%;
 		background-color: white;
@@ -72,5 +73,5 @@ body {
 	height: 100%;
 	visibility: hidden;
 	background-color: white;
-	z-index: 3;
+	z-index: 72;
 }

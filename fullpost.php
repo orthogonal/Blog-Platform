@@ -41,21 +41,25 @@ $('document').ready(function() {
 		switch($(this).text()){
 			case "Register":
 				$('.sheet').show();
+				$("#register").css("visibility", "visible");
 				$('#register').show();
 				evt.preventDefault();
 				break;
 			case "Login":
 				$('.sheet').show();
+				$("#login").css("visibility", "visible");
 				$('#login').show();
 				evt.preventDefault();
 				break;
 			case "New Post":
 				$('.sheet').show();
+				$("#newpost").css("visibility", "visible");
 				$('#newpost').show();
 				evt.preventDefault();
 				break;
 			case "About":
 				$('.sheet').show();
+				$("#about").css("visibility", "visible");
 				$('#about').show();
 				evt.preventDefault();
 				break;
