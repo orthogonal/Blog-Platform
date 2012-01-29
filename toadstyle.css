@@ -11,22 +11,23 @@
 
 .postHeader{
 		text-align: center;
-		font-size: 1.2em;
+		font-size: 25px;
 		margin: 10px;
 }
 
 .postAuthor, .postText, .postComments{
 		margin: 15px;
-		font-size: 0.8em;
+		font-size: 20px;
+		font-family: 'Palatino', 'Palatino Linotype', 'Georgia', serif;
 }
 
 .commentBox{
-		font-size: 0.8em;
+		font-size: 18px;
 		margin: 15px;
 }
 
 .comment{
-		font-size: 0.8em;
+		font-size: 18px;
 		margin: 15px;
 }
 

@@ -32,6 +32,7 @@ $('document').ready(function() {
 	$('#register').hide();
 	$('#login').hide();
 	$('#newpost').hide();
+	$('#editpost').hide();
 	$('.sheet').hide();
 	
 	$('.menulinks').click(function(evt) {
@@ -79,9 +80,9 @@ echo <<<_HDOC
 <div class="post">
 	<div class="postHeader">$row[2]</div>
 	<div class="postAuthor">Written by $row2[5] at $row[4]</div>
-	<div class="postText">$row[3]</div>
-	<div class="commentBox">
 _HDOC;
+	echo "<div class='postText'>" . str_replace('&lt;br /&gt;', '<br />', $row[3]) . "</div>";
+	echo "<div class='commentBox'>";
 
 if ($_COOKIE['main'] == "")
 	echo "Please register or login to comment on this post";
