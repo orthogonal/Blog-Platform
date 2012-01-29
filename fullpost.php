@@ -33,6 +33,7 @@ $('document').ready(function() {
 	$('#login').hide();
 	$('#newpost').hide();
 	$('#editpost').hide();
+	$('#about').hide();
 	$('.sheet').hide();
 	
 	$('.menulinks').click(function(evt) {
@@ -52,6 +53,11 @@ $('document').ready(function() {
 				$('#newpost').show();
 				evt.preventDefault();
 				break;
+			case "About":
+				$('.sheet').show();
+				$('#about').show();
+				evt.preventDefault();
+				break;
 		}
 	});
 	
@@ -60,6 +66,7 @@ $('document').ready(function() {
 		$('#register').fadeOut(200);
 		$('#login').fadeOut(200);
 		$('#newpost').fadeOut(200);
+		$('#about').fadeOut(200);
 		//Clear login/register inputs
 	});
 }); //end ready

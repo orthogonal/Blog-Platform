@@ -18,8 +18,8 @@ $isadmin = false;
 $cookieparts = null;
 
 if ($_COOKIE['main'] == "")
-	echo  "<li class='menulinks'><a href='http://www.lathamcity.com/register.php'>Register</a></li>  
-	<li class='menulinks'><a href='http://www.lathamcity.com/login.php'>Login</a></li>";
+	echo  "<li class='menulinks'><a href='http://www.lathamcity.com/blog/nojs.php'>Register</a></li>  
+	<li class='menulinks'><a href='http://www.lathamcity.com/blog/nojs.php'>Login</a></li>";
 else{
 	$cookieparts = explode('&', $_COOKIE['main']);
 	$query = "SELECT * FROM blog_users WHERE id='$cookieparts[1]'";
@@ -28,11 +28,11 @@ else{
 	if ($row[3] == 1) $isadmin = true;
 
 	echo "<li class='menulinks'>Welcome $cookieparts[0]</li>";
-	echo "<li class='menulinks' class='link'><a href='http://www.lathamcity.com/blog/logout.php'>Logout</a></li>";
-	if ($isadmin) echo "<li class='menulinks' class='link'><a href='http://www.lathamcity.com/newpost.php'>New Post</a></li>";
+	echo "<li class='menulinks' class='link'><a href='http://www.lathamcity.com/blog/nojs.php'>Logout</a></li>";
+	if ($isadmin) echo "<li class='menulinks' class='link'><a href='http://www.lathamcity.com/blog/nojs.php'>New Post</a></li>";
 }
 
-echo "<li class='menulinks'>About</li>  </ul>  <div class='clearfix'></div></div>";
+echo "<li class='menulinks'><a href='http://www.lathamcity.com/blog/nojs.php'>About</a></li>  </ul>  <div class='clearfix'></div></div>";
 
 echo <<<_HDOC
 <div class='sheet'></div>
@@ -99,6 +99,10 @@ echo <<<_HDOC
 		<input type="hidden" name="editpost_id" id="editpost_id" value="null" />
 		</table>
 	</form>
+</div>
+
+<div id='about'>
+	This is Andrew Latham's blog.
 </div>
 _HDOC;
 ?>

@@ -43,7 +43,7 @@ body {
 		z-index: 64;
 }
 
-#newpost, #editpost{
+#newpost, #editpost, #about{
 		position: absolute;
 		left: 15%;
 		right: 15%;
